@@ -1,0 +1,129 @@
+/*
+  The majority of this stylesheet is copied from https://github.com/lmenezes/elasticsearch-kopf and covered by the MIT license.
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Leonardo Menezes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+  color: #D0D0D0;
+
+}
+h3 {
+  margin: 10px;
+  padding: 0;
+}
+a {
+  color: #D0D0D0;
+  text-decoration: none;
+}
+.page-container {
+  width: 100%;
+}
+.page-container .navbar {
+  background-color: #468847;
+  height: 50px;
+  vertical-align: middle;
+  display: table;
+  width: inherit;
+  color: #DFF0D8;
+}
+.page-container .navbar .title {
+  font-size: 18pt;
+  width: 20%;
+  text-align: left;
+  padding-left: 20px;
+}
+.page-container .navbar .selected {
+  background-color: #DFF0D8;
+  color: #468847;
+}
+.page-container .navbar div {
+  display: table-cell;
+  font-size: 12pt;
+  /*width: 10%;*/
+  text-align: center;
+  vertical-align: middle;
+}
+.page-container .tabular {
+  width: inherit;
+
+  display: table;
+}
+.page-container .tabular .row {
+
+  width: inherit;
+  display: table-row;
+  font-size: 14px;
+  /*text-align: center;*/
+  vertical-align: middle;
+}
+.page-container .tabular .row div {
+
+  display: table-cell;
+  /*width: 10%;*/
+  /*text-align: center;*/
+
+
+  padding: 6px 10px;
+  border-top: 1px solid #444;
+}
+.right {
+  text-align: right;
+}
+.status {
+  width: 10%;
+}
+.reportdate {
+  width: 20%;
+}
+.host {
+  width: 33%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 14px;
+}
+table > thead > tr > th {
+  text-align: left;
+}
+table > tbody > tr > td {
+  border: 1px solid #444;
+  padding: 3px;
+}
+table > tbody > tr:nth-of-type(odd) {
+  #background-color: #f9f9f9;
+}
+.log {
+  overflow: auto;
+  white-space: pre;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid #444;
+  padding: 3px;
+  font-family: "Monaco", "Courier New", Courier, fixed-width;
+}

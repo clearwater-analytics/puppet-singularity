@@ -1,0 +1,31 @@
+<div style="width: inherit; display: table; text-align: center; padding: 20px 0; table-layout: fixed;">
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'all' %>"><a href="/">All (<%= @response['counts']['all'] %>)</a></div>
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'unchanged' %>"><a href="/unchanged">Unchanged (<%= @response['counts']['unchanged'] %>)</a></div>
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'changed' %>"><a href="/changed">Changed (<%= @response['counts']['changed'] %>)</a></div>
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'pending' %>"><a href="/pending">Pending (<%= @response['counts']['pending'] %>)</a></div>
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'failed' %>"><a href="/failed">Failed (<%= @response['counts']['failed'] %>)</a></div>
+    <div style="display: table-cell;<%= ' text-decoration: underline;' if @response['caller'] == 'unresponsive' %>"><a href="/unresponsive">Unresponsive (<%= @response['counts']['unresponsive'] %>)</a></div>
+    <div style="display: table-cell;">
+      <form method='get'>
+        <input type='hidden' name='key', value='host'>
+        <label for='filter'>Search</label>
+        <input type='text' id='filter' name='filter' style="background-color: #222; color: #D0D0D0; width: 125px;">
+      </form>
+    </div>
+</div>
+<div class='tabular' style="table-layout: fixed;">
+  <div class='row'>
+    <div class='right'>Status</div><div>Time</div><div class='host'>Host</div><div>Changed</div><div>Failed</div><div>Total</div><div>Runtime</div>
+  </div>
+<% @response['values'].each do |row| %>
+  <div class='row'>
+    <div class='right'><%= row['status'] %></div>
+    <div><a href='/report/<%= row['report_id'] %>'><%= row['time'] %></a></div>
+    <div><a href='/host/<%= row['node_id'] %>'><%= row['host'] %></a></div>
+    <div><%= row['resources_changed'] if row['resources_changed'].to_i > 0 %></div>
+    <div><%= row['resources_failed'] if row['resources_failed'].to_i > 0 %></div>
+    <div><%= row['resources_total'] %></div>
+    <div><%= row['runtime'].to_f.round(2) %>s</div>
+  </div>
+<% end %>
+</div>

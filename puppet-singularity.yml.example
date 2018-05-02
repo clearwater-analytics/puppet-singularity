@@ -1,0 +1,17 @@
+---
+  db_host: localhost
+  db_port: 5432
+  db_type: postgresql
+  db_schema: singularity
+  db_user: singularity
+  db_password: singularity
+
+  # The unresponsive_detection_threshold puts hosts into the unresponsive endpoint after the defined time limit
+  unresponsive_detection_threshold: 2 # hours
+
+  log_file: puppet-singularity.log
+  # Will gzip every report.  Saves a lot of space and does not generate a lot more viewing overhead.
+  compress_every_report: true
+
+  reports_dir: /var/puppet-singularity/reports
+  error_dir: /var/puppet/singularity/errors

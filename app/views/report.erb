@@ -1,0 +1,31 @@
+<h3>Summary</h3>
+<div class="tabular">
+  <div class='row'>
+    <div><strong>Host</strong></div>
+    <div><strong>Configuration Version</strong></div>
+    <div><strong>Status</strong></div>
+    <div><strong>Report Timestamp</strong></div>
+  </div>
+  <div class='row'>
+    <div style="border-bottom: 1px solid #444;"><a href="/host/<%= @response['metadata']['node_id'] %>"><%= @response['report']['host'] %></a></div>
+    <div style="border-bottom: 1px solid #444;"><%= @response['report']['configuration_version'] %></div>
+    <div style="border-bottom: 1px solid #444;"><a href="/<%= @response['report']['status'] %>"><%= @response['report']['status'] %></a></div>
+    <div style="border-bottom: 1px solid #444;"><%= @response['report']['time'] %></div>
+  </div>
+</div>
+<h3>Logs</h3>
+<div class='log'>
+<% @response['report']['logs'].each do |msg| %><span style="<% if msg['level'] == 'warning' %>color: #c09853;<% elsif msg['level'] == 'err' %>color: #b94a48;<% else %><% end %>"><%= msg['level'] %>: <%= msg['source'] %>: <%= Rack::Utils.escape_html(msg['message']) %></span>
+<% end %>
+</div>
+<% if @response['report']['status'] != 'failed' %>
+<h3>Time</h3>
+<div class='tabular'>
+  <% @response['report']['metrics']['time']['values'].each do |metric| %>
+  <div class='row'>
+    <div><%= metric[1] %></div>
+    <div><%= metric[2].to_f.round(2) %>s</div>
+  </div>
+  <% end %>
+</div>
+<% end %>
