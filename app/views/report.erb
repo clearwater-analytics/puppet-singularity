@@ -14,10 +14,16 @@
   </div>
 </div>
 <h3>Logs</h3>
+<% if @@config['enable_report_highlighting'] %>
 <div class='log'>
-<% @response['report']['logs'].each do |msg| %><span style="<% if msg['level'] == 'warning' %>color: #c09853;<% elsif msg['level'] == 'err' %>color: #b94a48;<% else %><% end %>"><%= msg['level'] %>: <%= msg['source'] %>: <%= Rack::Utils.escape_html(msg['message']) %></span>
+<% @response['report']['logs'].each do |msg| %><span style="<% if msg['level'] == 'warning' %>color: #c09853;<% elsif msg['level'] == 'err' %>color: #b94a48;<% else %><% end %>"><%= msg['level'] %>: <%= msg['source'] %>: <% Rack::Utils.escape_html(msg['message']).each_line do |line| %><% if line != nil %><% if line[0] == '+' %><span class="highlight-add"><%= line %></span><% elsif line[0] == '-' %><span class="highlight-delete"><%= line %></span><% else %><%= line %><% end %><% end %><% end %></span>
 <% end %>
 </div>
+<% else %>
+<div class='log'>
+<% @response['report']['logs'].each do |msg| %><span style="<% if msg['level'] == 'warning' %>color: #c09853;<% elsif msg['level'] == 'err' %>color: #b94a48;<% else %><% end %>"><%= msg['level'] %>: <%= msg['source'] %>: <%= Rack::Utils.escape_html(msg['message']) %><% end %></span>
+</div>
+<% end %>
 <% if @response['report']['status'] != 'failed' %>
 <h3>Time</h3>
 <div class='tabular'>
