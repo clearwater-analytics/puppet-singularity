@@ -13,5 +13,8 @@
   # Will gzip every report.  Saves a lot of space and does not generate a lot more viewing overhead.
   compress_every_report: true
 
+  # Highlight file additions and deletions in report view
+  enable_report_highlighting: false
+
   reports_dir: /var/puppet-singularity/reports
   error_dir: /var/puppet/singularity/errors

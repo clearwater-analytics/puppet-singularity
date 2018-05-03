@@ -127,3 +127,11 @@ table > tbody > tr:nth-of-type(odd) {
   padding: 3px;
   font-family: "Monaco", "Courier New", Courier, fixed-width;
 }
+
+.highlight-add {
+  background-color: #006600;
+}
+
+.highlight-delete {
+  background-color: #880000;
+}
